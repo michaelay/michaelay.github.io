@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ssl | My Octopress Blog]]></title>
+  <link href="http://michaelay.github.io/blog/categories/ssl/atom.xml" rel="self"/>
+  <link href="http://michaelay.github.io/"/>
+  <updated>2014-11-28T14:12:50-08:00</updated>
+  <id>http://michaelay.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Force SSL]]></title>
+    <link href="http://michaelay.github.io/blog/2012/01/03/rails-force-ssl/"/>
+    <updated>2012-01-03T15:21:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2012/01/03/rails-force-ssl</id>
+    <content type="html"><![CDATA[<p>
+Staring rails 3, we shall avoid using ssl_requirement GEM, as the GEM does not work very well on heroku. 
+Sometimes the HTTPS page is redirected and the URL params are lost. 
+
+To fix this, force using HTTPS in config/routes.rb as follow: 
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  resources :accounts,
+</span><span class='line'>            :constraints =&gt; { :protocol =&gt; 'https' } do 
+</span><span class='line'>  # ... 
+</span><span class='line'>  end </span></code></pre></td></tr></table></div></figure>
+
+You can also use scope. 
+</p>
+
+]]></content>
+  </entry>
+  
+</feed>

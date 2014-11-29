@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rubyonrails | My Octopress Blog]]></title>
+  <link href="http://michaelay.github.io/blog/categories/rubyonrails/atom.xml" rel="self"/>
+  <link href="http://michaelay.github.io/"/>
+  <updated>2014-11-28T23:23:41-08:00</updated>
+  <id>http://michaelay.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Running Delayed Job on Localhost Pow! Server]]></title>
+    <link href="http://michaelay.github.io/blog/2012/01/13/running-delayed-job-on-localhost-pow-server/"/>
+    <updated>2012-01-13T11:48:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2012/01/13/running-delayed-job-on-localhost-pow-server</id>
+    <content type="html"><![CDATA[<p>
+To run queued delayed jobs: 
+</p>
+
+
+<pre><code class="ruby ">rake jobs:work 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Force SSL]]></title>
+    <link href="http://michaelay.github.io/blog/2012/01/03/rails-force-ssl/"/>
+    <updated>2012-01-03T15:21:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2012/01/03/rails-force-ssl</id>
+    <content type="html"><![CDATA[<p>
+Staring rails 3, we shall avoid using ssl_requirement GEM, as the GEM does not work very well on heroku. 
+Sometimes the HTTPS page is redirected and the URL params are lost. 
+
+To fix this, force using HTTPS in config/routes.rb as follow: 
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  resources :accounts,
+</span><span class='line'>            :constraints =&gt; { :protocol =&gt; 'https' } do 
+</span><span class='line'>  # ... 
+</span><span class='line'>  end </span></code></pre></td></tr></table></div></figure>
+
+You can also use scope. 
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Restarting Pow]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/14/restarting/"/>
+    <updated>2011-11-14T16:31:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/14/restarting</id>
+    <content type="html"><![CDATA[<p>
+Pow is a zero configuration web server for ruby on rails development. 
+You can download it from <a href="pow.cx">pow.cx</a>.
+</p>
+
+
+<p>
+While it&#8217;s easy to install, sometimes you will need to restart it to keep things working.
+</p>
+
+
+<p>
+The easiest way is to do this under the rails app folder: 
+</p>
+
+
+<pre><code class="sh ">~ michael$ touch tmp restart.txt 
+</code></pre>
+
+<p>
+The command restart the server. 
+What if the pow itself does not respond at all and touching the restart.txt does not work? 
+</p>
+
+
+<p>
+You can restart the service as follow: 
+</p>
+
+
+<pre><code class="sh ">~ michael$ launchctl unload -Fw ~/Library/LaunchAgents/cx.pow.powd.plist
+~ michael$ launchctl load -Fw ~/Library/LaunchAgents/cx.pow.powd.plist
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ActiveRecord - Use Include to Optimize SQL Query Performance]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/14/activerecord-use-include-to-optimize-sql-query-performance/"/>
+    <updated>2011-11-14T15:14:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/14/activerecord-use-include-to-optimize-sql-query-performance</id>
+    <content type="html"><![CDATA[<p>
+Consider you have a model Post and a mode Comment, where a Post has multiple Comments. 
+You DB has 10 Posts and 2000 Comments. 
+Now you want to get the all Posts and all Comments. How many SQL is executed if you do the following?
+</p>
+
+
+<pre><code class="ruby ">posts = Post.all
+posts.each do |p| 
+  p.comments   
+end 
+</code></pre>
+
+<p>
+Rails execute 2010 SQL query for you. The code is easy to write, but not so fun to run on your webserver. 
+Rails gets the id of the Post objects and use them in 2000 seperate SQL query to get their Comments. 
+What about getting all the Comments all together when fetching the Post objects? 
+The <em>include</em> method does exactly that. 
+It tells Rails to run one additional SQL query to fetch all the Comments object after the SQL fetch a Post object. 
+The code is as follow: 
+</p>
+
+
+<pre><code class="ruby">Post.all(:include =&gt; :comments)
+</code></pre>
+
+<p>
+And this piece of code runs 20 SQL query instead of 2010 in the previous version. 
+Yet another nice little thing to distinguish between software engineers and programmers.
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test Fixtures Tricks]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/14/test-fixtures-tricks/"/>
+    <updated>2011-11-14T15:03:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/14/test-fixtures-tricks</id>
+    <content type="html"><![CDATA[<p>
+Often we have model classes using serialized data fields. 
+This is how I write the YML fixture test data:
+</p>
+
+
+<pre><code class="ruby Test fixture YML example for serialized array, serialized hash, and datetime">one:
+  id: 100
+  some_hash_serialized: &lt;%= { :profile_image_url =&gt; 'http://....png' }.to_yaml.inspect %&gt;
+  some_array_serialized: &lt;%= [ 'hello', 'world' ].to_yaml.inspect %&gt;
+  some_datetime: &lt;%= first_occurred_at: &lt;%= 10.days.ago.to_s(:db) %&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

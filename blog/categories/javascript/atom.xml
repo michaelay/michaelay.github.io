@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | My Octopress Blog]]></title>
+  <link href="http://michaelay.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://michaelay.github.io/"/>
+  <updated>2014-11-28T23:23:41-08:00</updated>
+  <id>http://michaelay.github.io/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Private Variable Through Closure]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/16/javascript-private-variable-through-closure/"/>
+    <updated>2011-11-16T12:11:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/16/javascript-private-variable-through-closure</id>
+    <content type="html"><![CDATA[<p>Defining Javascript class private instance variable
+Example:
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">MyClass</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// constructor</span>
+</span><span class='line'>  <span class="k">this</span><span class="p">.</span><span class="nx">getA</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">a</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myFunc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">getA</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// do something with a</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="nx">br</span><span class="o">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Instance Method This Variable]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/16/javascript-instance-method-this-variable/"/>
+    <updated>2011-11-16T12:05:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/16/javascript-instance-method-this-variable</id>
+    <content type="html"><![CDATA[<p>In Javascript class instance method, you must use the <em>this</em> variable to access instance variables.
+For instance:
+<code>javascript Javascript version
+return this.foo;
+</code>
+as oppose to in C++:
+<code>c++ C++ version
+return foo;
+</code>
+One way to get around with using this for every instance variable is as follow:
+<code>javascript
+MyClass.prototype.myFunc = function() {
+  with(this) {
+    return foo;
+  }
+}
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Function Properties]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/16/javascript-function-properties/"/>
+    <updated>2011-11-16T11:28:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/16/javascript-function-properties</id>
+    <content type="html"><![CDATA[<p>
+Sometimes you need variable in a function to persist across invocations. 
+You can always define global variable to do that. However, that clusters up the namespace. 
+</p>
+
+
+<p>
+A better way to do that is to define a function property accessible only to that particular function.
+Example:  
+</p>
+
+
+<pre><code class="javascript ">someFunction.counter = 0; 
+
+function someFunction() { 
+  return someFunction.counter; 
+  // the counter is like a static function variable in C
+} 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript Function Optional Arguments]]></title>
+    <link href="http://michaelay.github.io/blog/2011/11/16/javascript-function-optional-arguments/"/>
+    <updated>2011-11-16T11:21:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2011/11/16/javascript-function-optional-arguments</id>
+    <content type="html"><![CDATA[<p>Simple example:
+<code>javascript
+function foo(a, /* optional */ b) {
+  b = b || []; // returns b if b is defined and non-null,
+               // even if b is empty.
+}
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>

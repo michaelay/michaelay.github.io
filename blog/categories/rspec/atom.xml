@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rspec | CopyAndPaste]]></title>
+  <link href="http://michaelay.github.io/blog/categories/rspec/atom.xml" rel="self"/>
+  <link href="http://michaelay.github.io/"/>
+  <updated>2014-12-02T10:47:52-08:00</updated>
+  <id>http://michaelay.github.io/</id>
+  <author>
+    <name><![CDATA[MichaelAY]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec Guide]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/02/rspec-guide/"/>
+    <updated>2014-12-02T10:47:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/02/rspec-guide</id>
+    <content type="html"><![CDATA[<p>A good guide for writing rspec</p>
+
+<p><a href="http://betterspecs.org/">BetterSpecs</a></p>
+]]></content>
+  </entry>
+  
+</feed>

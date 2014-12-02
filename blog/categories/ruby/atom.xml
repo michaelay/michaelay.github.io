@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-11-29T10:58:43-08:00</updated>
+  <updated>2014-12-02T10:47:52-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec Guide]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/02/rspec-guide/"/>
+    <updated>2014-12-02T10:47:00-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/02/rspec-guide</id>
+    <content type="html"><![CDATA[<p>A good guide for writing rspec</p>
+
+<p><a href="http://betterspecs.org/">BetterSpecs</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Enumerator Inject]]></title>

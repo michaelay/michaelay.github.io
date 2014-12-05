@@ -9,12 +9,7 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Simple example: 1
-2
-3
-4
-function foo(a, /* optional */ b) { b = b || []; // returns b if b is defined and non-null, // even if b is empty.
-} ">
+  <meta name="description" content="Sometimes you need variable in a function to persist across invocations. You can always define global variable to do that. However, that clusters up &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -43,7 +38,7 @@ function foo(a, /* optional */ b) { b = b || []; // returns b if b is defined an
   <header role="banner"><hgroup>
   <h1><a href="/">CopyAndPaste</a></h1>
   
-    <h2>programming notes</h2>
+    <h2>random programming notes</h2>
   
 </hgroup>
 
@@ -70,6 +65,60 @@ function foo(a, /* optional */ b) { b = b || []; // returns b if b is defined an
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/16/javascript-function-properties/">Javascript Function Properties</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-16T11:28:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>11:28 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+Sometimes you need variable in a function to persist across invocations. 
+You can always define global variable to do that. However, that clusters up the namespace. 
+</p>
+
+
+<p>
+A better way to do that is to define a function property accessible only to that particular function.
+Example:  
+</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">someFunction</span><span class="p">.</span><span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">function</span> <span class="nx">someFunction</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">someFunction</span><span class="p">.</span><span class="nx">counter</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">// the counter is like a static function variable in C</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -444,6 +493,10 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/05/user-defined-metadata-in-rspec/">User-defined Metadata in Rspec</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/02/rspec-guide/">Rspec Guide</a>
       </li>
     
@@ -457,10 +510,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     
       <li class="post">
         <a href="/blog/2014/11/26/ruby-auto-revivifying-hash/">Ruby Auto Revivifying Hash</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/26/welcome-to-jekyll/">Welcome to Jekyll!</a>
       </li>
     
   </ul>

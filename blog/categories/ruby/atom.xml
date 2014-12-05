@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-02T10:47:52-08:00</updated>
+  <updated>2014-12-05T14:11:20-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[User-defined Metadata in Rspec]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/05/user-defined-metadata-in-rspec/"/>
+    <updated>2014-12-05T13:47:09-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/05/user-defined-metadata-in-rspec</id>
+    <content type="html"><![CDATA[<p>Rspec <code>describe</code>, <code>context</code> and <code>it</code> supports metadata in the form of a hash. Syntax as follow:
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">RSpec</span><span class="o">.</span><span class="n">describe</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">some</span> <span class="n">description</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="ss">:foo</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:bar</span> <span class="k">do</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;context &quot;when some condition&quot;, :value =&amp;gt; true do </span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">    it &quot;does something&quot;, :hihi, :day =&amp;gt; 10 do </span>
+</span><span class='line'><span class="sr">        expect(exapmle.metadata[:foo]).to eq(1) </span>
+</span><span class='line'><span class="sr">        expect(example.metadata[:value]).to be true</span>
+</span><span class='line'><span class="sr">        expect(example.metadata[:hihi]).to be true </span>
+</span><span class='line'><span class="sr">        expect(example.metadata[:day]).to eq(10) </span>
+</span><span class='line'><span class="sr">    end </span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">end </span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;end</span>
+</span></code></pre></td></tr></table></div></figure>
+There are 2 ways that I use metadata in RSpec.</p>
+
+<h3>To include shared_examples / shared_context</h3>
+
+<p>RSpec includes shared_context and shared_examples with same metadata
+<code>ruby
+RSpec.shared_context "shared stuff", :a =&gt; :b do
+    def shared_method
+        pp "hello"
+    end
+end
+</code>
+<code>ruby
+Rspec.describe "use shared stuff", :a =&gt; :b do
+end
+</code>
+is equivalent to
+<code>ruby
+Rspec.describe "use shared stuff" do
+    include_context "shared_stuff"
+end
+</code></p>
+
+<h3>Use metadata as variables</h3>
+
+<pre><code class="ruby ">RSpec.describe "use metadata as var", :num_elements =&gt; 7 do 
+
+    let(:elements) do
+        (1..example.metadata[:num_elements]).map { |n| "element#{n}" }
+    end 
+
+    it "prints elements" do 
+        pp elements 
+    end 
+
+end 
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rspec Guide]]></title>

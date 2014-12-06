@@ -12,7 +12,7 @@ RSpec.describe "some description", :foo => 1, :bar do
 
 	context "when some condition", :value => true do 
 	
-		it "does something", :hihi, :day => 10 do 
+		it "does something", :hihi, :day => 10 do |example| 
 			expect(exapmle.metadata[:foo]).to eq(1) 
 			expect(example.metadata[:value]).to be true
 			expect(example.metadata[:hihi]).to be true 
@@ -47,7 +47,7 @@ end
 ```ruby 
 RSpec.describe "use metadata as var", :num_elements => 7 do 
 
-	let(:elements) do
+	let(:elements) do |example|
 		(1..example.metadata[:num_elements]).map { |n| "element#{n}" }
 	end 
 	

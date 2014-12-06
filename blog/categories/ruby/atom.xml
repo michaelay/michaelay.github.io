@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-05T14:11:20-08:00</updated>
+  <updated>2014-12-05T16:32:41-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -38,7 +38,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;context &quot;when some condition&quot;, :value =&amp;gt; true do </span>
 </span><span class='line'>
-</span><span class='line'><span class="sr">    it &quot;does something&quot;, :hihi, :day =&amp;gt; 10 do </span>
+</span><span class='line'><span class="sr">    it &quot;does something&quot;, :hihi, :day =&amp;gt; 10 do |example| </span>
 </span><span class='line'><span class="sr">        expect(exapmle.metadata[:foo]).to eq(1) </span>
 </span><span class='line'><span class="sr">        expect(example.metadata[:value]).to be true</span>
 </span><span class='line'><span class="sr">        expect(example.metadata[:hihi]).to be true </span>
@@ -77,7 +77,7 @@ end
 
 <pre><code class="ruby ">RSpec.describe "use metadata as var", :num_elements =&gt; 7 do 
 
-    let(:elements) do
+    let(:elements) do |example|
         (1..example.metadata[:num_elements]).map { |n| "element#{n}" }
     end 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-08T10:57:29-08:00</updated>
+  <updated>2014-12-08T15:27:06-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Output With Color]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/08/ruby-output-with-color/"/>
+    <updated>2014-12-08T15:23:13-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/08/ruby-output-with-color</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/fazibear/colorize">Colorize - prints output in console with color</a></p>
+
+<p><code>sudo gem install colorize</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;colorize&#39;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;some output&quot;</span><span class="o">.</span><span class="n">red</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mocking Backtick in RSpec]]></title>

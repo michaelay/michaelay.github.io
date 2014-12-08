@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-08T10:57:29-08:00</updated>
+  <updated>2014-12-08T15:27:06-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Output With Color]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/08/ruby-output-with-color/"/>
+    <updated>2014-12-08T15:23:13-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/08/ruby-output-with-color</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/fazibear/colorize">Colorize - prints output in console with color</a></p>
+
+<p><code>sudo gem install colorize</code></p>
+
+<pre><code class="ruby">require 'colorize'
+puts "some output".red
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mocking Backtick in RSpec]]></title>
@@ -131,26 +146,6 @@ end
 <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 
 <span class="sr">&lt;h1&gt;hash: { &amp;ldquo;key 1&amp;rdquo; =&gt; &amp;ldquo;value 1&amp;rdquo;, &amp;ldquo;key 2&amp;rdquo; =&gt; &amp;ldquo;value 2&amp;rdquo;, &amp;ldquo;key 3&amp;rdquo; =&gt; &amp;ldquo;value 3&amp;rdquo; }&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span></code></pre></div></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Auto Revivifying Hash]]></title>
-    <link href="http://michaelay.github.io/blog/2014/11/26/ruby-auto-revivifying-hash/"/>
-    <updated>2014-11-26T08:34:56-08:00</updated>
-    <id>http://michaelay.github.io/blog/2014/11/26/ruby-auto-revivifying-hash</id>
-    <content type="html"><![CDATA[<p>Hash auto revivification allows you to create content on the fly when accessing undefined hash element.
-Comes in handy when you need to build a nested hash</p>
-
-<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">h</span><span class="o">.</span><span class="n">default_proc</span><span class="p">)</span> <span class="p">}</span>
-<span class="nb">hash</span><span class="o">[&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">a</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">][&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">b</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">hash</span><span class="o">[&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">a</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">][&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">c</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">hash</span><span class="o">[&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">b</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">][&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">c</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="nb">puts</span> <span class="nb">hash</span><span class="o">.</span><span class="n">inspect</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-
-<span class="sr">&lt;h1&gt;&amp;ldquo;{&quot;a&amp;rdquo;=&gt;{&amp;ldquo;b&amp;rdquo;=&gt;1, &amp;ldquo;c&amp;rdquo;=&gt;1}, &amp;ldquo;b&amp;rdquo;=&gt;{&amp;ldquo;c&amp;rdquo;=&gt;1}}&quot;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
 
 <span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span></code></pre></div></p>
 ]]></content>

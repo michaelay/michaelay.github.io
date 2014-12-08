@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-05T16:32:41-08:00</updated>
+  <updated>2014-12-08T10:57:29-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mocking Backtick in RSpec]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec/"/>
+    <updated>2014-12-08T10:54:23-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec</id>
+    <content type="html"><![CDATA[<p>`cmd` is a method in Kernel.
+Simply mock the <code>Kernel</code> object.</p>
+
+<pre><code class="ruby">Kernel.expects( :` ).with( 'unzip -d /tmp test.zip' )
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[User-defined Metadata in Rspec]]></title>

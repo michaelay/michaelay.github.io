@@ -9,7 +9,9 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Sometimes you need variable in a function to persist across invocations. You can always define global variable to do that. However, that clusters up &hellip;">
+  <meta name="description" content="In Javascript class instance method, you must use the this variable to access instance variables.
+For instance: Javascript version1
+return this.foo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +67,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/16/javascript-instance-method-this-variable/">Javascript Instance Method This Variable</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-16T12:05:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:05 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Javascript class instance method, you must use the <em>this</em> variable to access instance variables.
+For instance:</p>
+
+<figure class='code'><figcaption><span>Javascript version</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>as oppose to in C++:</p>
+
+<figure class='code'><figcaption><span>C++ version</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">return</span> <span class="n">foo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>One way to get around with using this for every instance variable is as follow:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MyClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myFunc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">with</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">foo</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -493,6 +552,10 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/08/mocking-backtick-in-rspec/">Mocking Backtick in RSpec</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/05/user-defined-metadata-in-rspec/">User-defined Metadata in Rspec</a>
       </li>
     
@@ -506,10 +569,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     
       <li class="post">
         <a href="/blog/2014/11/27/ruby-inject/">Ruby Enumerator Inject</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/26/ruby-auto-revivifying-hash/">Ruby Auto Revivifying Hash</a>
       </li>
     
   </ul>

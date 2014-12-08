@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-05T16:32:41-08:00</updated>
+  <updated>2014-12-08T10:57:29-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mocking Backtick in RSpec]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec/"/>
+    <updated>2014-12-08T10:54:23-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec</id>
+    <content type="html"><![CDATA[<p>`cmd` is a method in Kernel.
+Simply mock the <code>Kernel</code> object.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">expects</span><span class="p">(</span> <span class="ss">:`</span> <span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="s1">&#39;unzip -d /tmp test.zip&#39;</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[User-defined Metadata in Rspec]]></title>

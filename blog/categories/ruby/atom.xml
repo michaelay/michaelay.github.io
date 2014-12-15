@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-08T15:27:06-08:00</updated>
+  <updated>2014-12-15T13:49:12-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Suppress Stdout and Stderr When Running RSpec]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec/"/>
+    <updated>2014-12-15T13:45:19-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec</id>
+    <content type="html"><![CDATA[<p>Sometimes code prints to stdout, stderr. Corresponding RSpec examples print the same output, which could be messy. To suppress the output:</p>
+
+<pre><code class="ruby">    def perform_sliently
+      # Store the original stderr and stdout in order to restore them later
+      @original_stderr = $stderr
+      @original_stdout = $stdout
+
+      # Redirect stderr and stdout
+      target_output_file = "/dev/null"
+      $stderr = File.new(target_output_file, 'w')
+      $stdout = File.new(target_output_file, 'w')
+
+      yield
+
+      $stderr = @original_stderr
+      $stdout = @original_stdout
+      @original_stderr = nil
+      @original_stdout = nil
+    end
+
+    it "suppresses output" do 
+        perform_sliently do 
+            # whatever code to test 
+        end 
+    end 
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Output With Color]]></title>
@@ -126,28 +160,6 @@ end
     <content type="html"><![CDATA[<p>A good guide for writing rspec</p>
 
 <p><a href="http://betterspecs.org/">BetterSpecs</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Enumerator Inject]]></title>
-    <link href="http://michaelay.github.io/blog/2014/11/27/ruby-inject/"/>
-    <updated>2014-11-27T14:54:56-08:00</updated>
-    <id>http://michaelay.github.io/blog/2014/11/27/ruby-inject</id>
-    <content type="html"><![CDATA[<p>Loop over enumerator with a seed, takes output from last round as input.</p>
-
-<p>eg.</p>
-
-<p>array to hash</p>
-
-<p><div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">array</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="o">]</span>
-<span class="nb">hash</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">inject</span><span class="p">({})</span> <span class="k">do</span> <span class="o">|</span><span class="n">memo</span><span class="p">,</span> <span class="n">n</span><span class="o">|</span>
-  <span class="n">memo</span><span class="o">[&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">key</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="o">+</span> <span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">value</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="o">+</span> <span class="n">n</span>
-<span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-
-<span class="sr">&lt;h1&gt;hash: { &amp;ldquo;key 1&amp;rdquo; =&gt; &amp;ldquo;value 1&amp;rdquo;, &amp;ldquo;key 2&amp;rdquo; =&gt; &amp;ldquo;value 2&amp;rdquo;, &amp;ldquo;key 3&amp;rdquo; =&gt; &amp;ldquo;value 3&amp;rdquo; }&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-
-<span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span></code></pre></div></p>
 ]]></content>
   </entry>
   

@@ -9,15 +9,7 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Defining Javascript class private instance variable
-Example: 1
-2
-3
-4
-5
-6
-7
-function MyClass(a) { // constructor this.getA = function() { return a &hellip;">
+  <meta name="description" content="Staring rails 3, we shall avoid using ssl_requirement GEM, as the GEM does not work very well on heroku. Sometimes the HTTPS page is redirected and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +65,52 @@ function MyClass(a) { // constructor this.getA = function() { return a &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/03/rails-force-ssl/">Rails Force SSL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-01-03T15:21:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2012</span></span> <span class='time'>3:21 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+Staring rails 3, we shall avoid using ssl_requirement GEM, as the GEM does not work very well on heroku. 
+Sometimes the HTTPS page is redirected and the URL params are lost. 
+
+To fix this, force using HTTPS in config/routes.rb as follow: 
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  resources :accounts,
+</span><span class='line'>            :constraints =&gt; { :protocol =&gt; 'https' } do 
+</span><span class='line'>  # ... 
+</span><span class='line'>  end </span></code></pre></td></tr></table></div></figure>
+
+You can also use scope. 
+</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -548,51 +586,9 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/10/initial-commit-welcome/">Initial Commit: Welcome</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-11-10T12:54:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:54 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://octopress.org/docs/blogging/"><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></a></p>
-
-<figure class='code'><figcaption><span>Useful commands</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</span><span class='line'>rake new_page<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</span><span class='line'>rake new_page<span class="o">[</span><span class="s2">&quot;title/page.html&quot;</span><span class="o">]</span>
-</span><span class='line'>rake generate
-</span><span class='line'>rake watch
-</span><span class='line'>rake preview
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -605,6 +601,10 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec/">Suppress Stdout and Stderr When Running RSpec</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/08/ruby-output-with-color/">Ruby Output With Color</a>
@@ -620,10 +620,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     
       <li class="post">
         <a href="/blog/2014/12/02/rspec-guide/">Rspec Guide</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/28/avoid-macos-from-sleeping/">Avoid MacOS From Sleeping</a>
       </li>
     
   </ul>

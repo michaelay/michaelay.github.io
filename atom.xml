@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-08T15:27:06-08:00</updated>
+  <updated>2014-12-15T13:49:12-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Suppress Stdout and Stderr When Running RSpec]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec/"/>
+    <updated>2014-12-15T13:45:19-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec</id>
+    <content type="html"><![CDATA[<p>Sometimes code prints to stdout, stderr. Corresponding RSpec examples print the same output, which could be messy. To suppress the output:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">perform_sliently</span>
+</span><span class='line'>  <span class="c1"># Store the original stderr and stdout in order to restore them later</span>
+</span><span class='line'>  <span class="vi">@original_stderr</span> <span class="o">=</span> <span class="vg">$stderr</span>
+</span><span class='line'>  <span class="vi">@original_stdout</span> <span class="o">=</span> <span class="vg">$stdout</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Redirect stderr and stdout</span>
+</span><span class='line'>  <span class="n">target_output_file</span> <span class="o">=</span> <span class="s2">&quot;/dev/null&quot;</span>
+</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">target_output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vg">$stdout</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">target_output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">yield</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="vi">@original_stderr</span>
+</span><span class='line'>  <span class="vg">$stdout</span> <span class="o">=</span> <span class="vi">@original_stdout</span>
+</span><span class='line'>  <span class="vi">@original_stderr</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'>  <span class="vi">@original_stdout</span> <span class="o">=</span> <span class="kp">nil</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">it</span> <span class="s2">&quot;suppresses output&quot;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">perform_sliently</span> <span class="k">do</span>
+</span><span class='line'>      <span class="c1"># whatever code to test </span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Output With Color]]></title>
@@ -573,30 +633,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
   <li>self-descriptive messages, eg. tells how to parse using MIME</li>
   <li>hypermedia as the enginer of application state</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Initial Commit: Welcome]]></title>
-    <link href="http://michaelay.github.io/blog/2011/11/10/initial-commit-welcome/"/>
-    <updated>2011-11-10T12:54:00-08:00</updated>
-    <id>http://michaelay.github.io/blog/2011/11/10/initial-commit-welcome</id>
-    <content type="html"><![CDATA[<p><a href="http://octopress.org/docs/blogging/"><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></a></p>
-
-<figure class='code'><figcaption><span>Useful commands</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake new_post<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</span><span class='line'>rake new_page<span class="o">[</span><span class="s2">&quot;title&quot;</span><span class="o">]</span>
-</span><span class='line'>rake new_page<span class="o">[</span><span class="s2">&quot;title/page.html&quot;</span><span class="o">]</span>
-</span><span class='line'>rake generate
-</span><span class='line'>rake watch
-</span><span class='line'>rake preview
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

@@ -15,8 +15,7 @@ def silence
 	@original_stdout = $stdout
 
 	# Redirect stderr and stdout
-	$stderr = File.new("/dev/null", 'w')
-	$stdout = File.new("/dev/null", 'w')
+	$stderr = $stdout = StringIO.new
 
 	yield
 

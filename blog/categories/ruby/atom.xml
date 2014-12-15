@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-15T13:58:03-08:00</updated>
+  <updated>2014-12-15T15:31:44-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -26,8 +26,7 @@
     @original_stdout = $stdout
 
     # Redirect stderr and stdout
-    $stderr = File.new("/dev/null", 'w')
-    $stdout = File.new("/dev/null", 'w')
+    $stderr = $stdout = StringIO.new
 
     yield
 

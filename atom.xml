@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-15T13:58:03-08:00</updated>
+  <updated>2014-12-15T15:31:44-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -41,15 +41,13 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-<span class='line-number'>22</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">silence</span>
 </span><span class='line'>  <span class="c1"># Store the original stderr and stdout in order to restore them later</span>
 </span><span class='line'>  <span class="vi">@original_stderr</span> <span class="o">=</span> <span class="vg">$stderr</span>
 </span><span class='line'>  <span class="vi">@original_stdout</span> <span class="o">=</span> <span class="vg">$stdout</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="c1"># Redirect stderr and stdout</span>
-</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/dev/null&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vg">$stdout</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/dev/null&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="vg">$stdout</span> <span class="o">=</span> <span class="no">StringIO</span><span class="o">.</span><span class="n">new</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">yield</span>
 </span><span class='line'>

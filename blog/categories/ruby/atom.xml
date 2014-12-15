@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-15T13:49:12-08:00</updated>
+  <updated>2014-12-15T13:58:03-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -20,29 +20,28 @@
     <id>http://michaelay.github.io/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec</id>
     <content type="html"><![CDATA[<p>Sometimes code prints to stdout, stderr. Corresponding RSpec examples print the same output, which could be messy. To suppress the output:</p>
 
-<pre><code class="ruby">    def perform_sliently
-      # Store the original stderr and stdout in order to restore them later
-      @original_stderr = $stderr
-      @original_stdout = $stdout
+<pre><code class="ruby">def silence
+    # Store the original stderr and stdout in order to restore them later
+    @original_stderr = $stderr
+    @original_stdout = $stdout
 
-      # Redirect stderr and stdout
-      target_output_file = "/dev/null"
-      $stderr = File.new(target_output_file, 'w')
-      $stdout = File.new(target_output_file, 'w')
+    # Redirect stderr and stdout
+    $stderr = File.new("/dev/null", 'w')
+    $stdout = File.new("/dev/null", 'w')
 
-      yield
+    yield
 
-      $stderr = @original_stderr
-      $stdout = @original_stdout
-      @original_stderr = nil
-      @original_stdout = nil
-    end
+    $stderr = @original_stderr
+    $stdout = @original_stdout
+    @original_stderr = nil
+    @original_stdout = nil
+end
 
-    it "suppresses output" do 
-        perform_sliently do 
-            # whatever code to test 
-        end 
+it "suppresses output" do 
+    silence do 
+        # whatever code to test 
     end 
+end 
 </code></pre>
 ]]></content>
   </entry>

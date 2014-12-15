@@ -115,16 +115,14 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">perform_sliently</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">silence</span>
 </span><span class='line'>  <span class="c1"># Store the original stderr and stdout in order to restore them later</span>
 </span><span class='line'>  <span class="vi">@original_stderr</span> <span class="o">=</span> <span class="vg">$stderr</span>
 </span><span class='line'>  <span class="vi">@original_stdout</span> <span class="o">=</span> <span class="vg">$stdout</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="c1"># Redirect stderr and stdout</span>
-</span><span class='line'>  <span class="n">target_output_file</span> <span class="o">=</span> <span class="s2">&quot;/dev/null&quot;</span>
-</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">target_output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="vg">$stdout</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">target_output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vg">$stderr</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/dev/null&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="vg">$stdout</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/dev/null&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">yield</span>
 </span><span class='line'>
@@ -135,7 +133,7 @@
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">it</span> <span class="s2">&quot;suppresses output&quot;</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">perform_sliently</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">silence</span> <span class="k">do</span>
 </span><span class='line'>      <span class="c1"># whatever code to test </span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>

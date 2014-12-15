@@ -9,27 +9,26 @@ categories: ["ruby", "rspec"]
 Sometimes code prints to stdout, stderr. Corresponding RSpec examples print the same output, which could be messy. To suppress the output: 
 
 ```ruby
-    def perform_sliently
-      # Store the original stderr and stdout in order to restore them later
-      @original_stderr = $stderr
-      @original_stdout = $stdout
+def silence
+	# Store the original stderr and stdout in order to restore them later
+	@original_stderr = $stderr
+	@original_stdout = $stdout
 
-      # Redirect stderr and stdout
-      target_output_file = "/dev/null"
-      $stderr = File.new(target_output_file, 'w')
-      $stdout = File.new(target_output_file, 'w')
+	# Redirect stderr and stdout
+	$stderr = File.new("/dev/null", 'w')
+	$stdout = File.new("/dev/null", 'w')
 
-      yield
+	yield
 
-      $stderr = @original_stderr
-      $stdout = @original_stdout
-      @original_stderr = nil
-      @original_stdout = nil
-    end
+	$stderr = @original_stderr
+	$stdout = @original_stdout
+	@original_stderr = nil
+	@original_stdout = nil
+end
     
-    it "suppresses output" do 
-    	perform_sliently do 
-    		# whatever code to test 
-    	end 
-    end 
+it "suppresses output" do 
+	silence do 
+		# whatever code to test 
+	end 
+end 
 ``` 

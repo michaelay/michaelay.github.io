@@ -7,8 +7,22 @@ categories: [ruby, rspec]
 ---
 
 \`cmd\` is a method in Kernel. 
-Simply mock the `Kernel` object. 
+
+However, simply mocking the `Kernel` object does not work. 
+This is because `Kernel` is a module included by class `Object`, its methods are available in every Ruby object. 
+
+Instead of doing this: 
 
 ```ruby
-Kernel.expects( :` ).with( 'unzip -d /tmp test.zip' )
+Kernel.expects(:`).with(
+	'unzip -d /tmp test.zip'
+)
+```
+
+We should be doing this: 
+
+```ruby
+instance_of_current_object.expects(:`).with(
+	'unzip -d /tmp test.zip'
+)
 ```

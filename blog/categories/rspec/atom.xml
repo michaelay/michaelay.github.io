@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rspec | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-15T15:31:44-08:00</updated>
+  <updated>2014-12-19T11:42:09-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -50,10 +50,23 @@ end
     <link href="http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec/"/>
     <updated>2014-12-08T10:54:23-08:00</updated>
     <id>http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec</id>
-    <content type="html"><![CDATA[<p>`cmd` is a method in Kernel.
-Simply mock the <code>Kernel</code> object.</p>
+    <content type="html"><![CDATA[<p>`cmd` is a method in Kernel.</p>
 
-<pre><code class="ruby">Kernel.expects( :` ).with( 'unzip -d /tmp test.zip' )
+<p>However, simply mocking the <code>Kernel</code> object does not work.
+This is because <code>Kernel</code> is a module included by class <code>Object</code>, its methods are available in every Ruby object.</p>
+
+<p>Instead of doing this:</p>
+
+<pre><code class="ruby">Kernel.expects(:`).with(
+    'unzip -d /tmp test.zip'
+)
+</code></pre>
+
+<p>We should be doing this:</p>
+
+<pre><code class="ruby">instance_of_current_object.expects(:`).with(
+    'unzip -d /tmp test.zip'
+)
 </code></pre>
 ]]></content>
   </entry>

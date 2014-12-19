@@ -207,11 +207,30 @@
   </header>
 
 
-  <div class="entry-content"><p>`cmd` is a method in Kernel.
-Simply mock the <code>Kernel</code> object.</p>
+  <div class="entry-content"><p>`cmd` is a method in Kernel.</p>
+
+<p>However, simply mocking the <code>Kernel</code> object does not work.
+This is because <code>Kernel</code> is a module included by class <code>Object</code>, its methods are available in every Ruby object.</p>
+
+<p>Instead of doing this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">expects</span><span class="p">(</span> <span class="ss">:`</span> <span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span> <span class="s1">&#39;unzip -d /tmp test.zip&#39;</span> <span class="p">)</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">expects</span><span class="p">(</span><span class="ss">:`</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span>
+</span><span class='line'>  <span class="s1">&#39;unzip -d /tmp test.zip&#39;</span>
+</span><span class='line'><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We should be doing this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">instance_of_current_object</span><span class="o">.</span><span class="n">expects</span><span class="p">(</span><span class="ss">:`</span><span class="p">)</span><span class="o">.</span><span class="n">with</span><span class="p">(</span>
+</span><span class='line'>  <span class="s1">&#39;unzip -d /tmp test.zip&#39;</span>
+</span><span class='line'><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>

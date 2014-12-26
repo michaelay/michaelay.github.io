@@ -9,7 +9,9 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Staring rails 3, we shall avoid using ssl_requirement GEM, as the GEM does not work very well on heroku. Sometimes the HTTPS page is redirected and &hellip;">
+  <meta name="description" content="
+To run queued delayed jobs: 1
+rake jobs:work ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +67,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/13/running-delayed-job-on-localhost-pow-server/">Running Delayed Job on Localhost Pow! Server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-01-13T11:48:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>11:48 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+To run queued delayed jobs: 
+</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="ss">jobs</span><span class="p">:</span><span class="n">work</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -534,58 +573,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/10/restful-api/">RESTful API</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2011-11-10T13:13:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>1:13 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Representational state transfer</h1>
-
-
-<ul>
-  <li>transfer of representations of resources</li>
-  <li>HTTP is accidentally RESTful</li>
-  <li>use pre-existing, well-defined interface, minimize the addition of new appplication-specific features</li>
-  <li>stateless - server stores no client context. server can be stateful</li>
-  <li>cacheable</li>
-</ul>
-
-
-
-
-<h2>Uniform interface</h2>
-
-
-<ul>
-  <li>identification of resources</li>
-  <li>manipulation of resources through these representations</li>
-  <li>self-descriptive messages, eg. tells how to parse using MIME</li>
-  <li>hypermedia as the enginer of application state</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -603,6 +590,10 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/22/java-notes/">Java Object Creation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec/">Suppress Stdout and Stderr When Running RSpec</a>
       </li>
     
@@ -616,10 +607,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     
       <li class="post">
         <a href="/blog/2014/12/05/user-defined-metadata-in-rspec/">User-defined Metadata in Rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/02/rspec-guide/">Rspec Guide</a>
       </li>
     
   </ul>

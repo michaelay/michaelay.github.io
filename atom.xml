@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-19T11:42:09-08:00</updated>
+  <updated>2014-12-26T12:59:43-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,203 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Java Object Creation]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/22/java-notes/"/>
+    <updated>2014-12-22T10:09:21-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/22/java-notes</id>
+    <content type="html"><![CDATA[<p><em>Work in progress</em></p>
+
+<p>Notes from reading &ldquo;Effective Java&rdquo;</p>
+
+<h3>Static factory method</h3>
+
+<ul>
+<li>advantages
+
+<ul>
+<li>with names</li>
+<li>not required to create new object when invoked</li>
+<li>can return object of any subtype of its return type</li>
+</ul>
+</li>
+<li>disadvantages
+
+<ul>
+<li>classes without public or protected constructors cannot be subclassed</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="nf">Foo</span><span class="o">()</span> <span class="o">{}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Foo</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//...</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Foo</span> <span class="nf">valueOf</span><span class="o">(</span><span class="n">bool</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//... </span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Builder</h3>
+
+<p>Used when there are many constructor parameters</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">required1</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">required2</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">optional1</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">optional2</span><span class="o">;</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">// required </span>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">required1</span><span class="o">;</span>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">required2</span><span class="o">;</span>
+</span><span class='line'>      <span class="c1">// optional </span>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">optional1</span><span class="o">;</span>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">optional2</span><span class="o">;</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="kt">int</span> <span class="n">required1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">required2</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">this</span><span class="o">.</span><span class="na">required1</span> <span class="o">=</span> <span class="n">required1</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">this</span><span class="o">.</span><span class="na">required2</span> <span class="o">=</span> <span class="n">required2</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">required1</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">required1</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">required2</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">required2</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">optional1</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">optiona1</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">optional2</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">optiona2</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Foo</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="k">new</span> <span class="nf">Foo</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">private</span> <span class="nf">Foo</span><span class="o">(</span><span class="n">Builder</span> <span class="n">builder</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">required1</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">required1</span>
+</span><span class='line'>      <span class="n">required2</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">required2</span>
+</span><span class='line'>      <span class="n">optional1</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">optional1</span>
+</span><span class='line'>      <span class="n">optional2</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">optional2</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// usage example </span>
+</span><span class='line'><span class="n">Foo</span> <span class="n">fooInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Foo</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">).</span><span class="na">optional1</span><span class="o">(</span><span class="mi">100</span><span class="o">).</span><span class="na">optional2</span><span class="o">(</span><span class="mi">200</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// build should throw IllegalStateException if parameters violate rules </span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// method that uses Builder </span>
+</span><span class='line'><span class="c1">// assume Builder is defined as: </span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Builder</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">T</span> <span class="nf">build</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Tree</span> <span class="nf">nodeMethod</span><span class="o">(</span><span class="n">Builder</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Node</span><span class="o">&gt;</span> <span class="n">nodeBuilder</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c1">//...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>advantages:</p>
+
+<ul>
+<li>no long, unnamed list of parameters</li>
+<li>can fill up optional values</li>
+<li><p>disadvantages:</p></li>
+<li><p>speed</p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Suppress Stdout and Stderr When Running RSpec]]></title>
@@ -616,38 +813,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
 
 <p>
 </p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RESTful API]]></title>
-    <link href="http://michaelay.github.io/blog/2011/11/10/restful-api/"/>
-    <updated>2011-11-10T13:13:00-08:00</updated>
-    <id>http://michaelay.github.io/blog/2011/11/10/restful-api</id>
-    <content type="html"><![CDATA[<h1>Representational state transfer</h1>
-
-
-<ul>
-  <li>transfer of representations of resources</li>
-  <li>HTTP is accidentally RESTful</li>
-  <li>use pre-existing, well-defined interface, minimize the addition of new appplication-specific features</li>
-  <li>stateless - server stores no client context. server can be stateful</li>
-  <li>cacheable</li>
-</ul>
-
-
-
-
-<h2>Uniform interface</h2>
-
-
-<ul>
-  <li>identification of resources</li>
-  <li>manipulation of resources through these representations</li>
-  <li>self-descriptive messages, eg. tells how to parse using MIME</li>
-  <li>hypermedia as the enginer of application state</li>
-</ul>
 
 ]]></content>
   </entry>

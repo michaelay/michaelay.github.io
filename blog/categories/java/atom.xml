@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | CopyAndPaste]]></title>
+  <link href="http://michaelay.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://michaelay.github.io/"/>
+  <updated>2014-12-26T12:59:43-08:00</updated>
+  <id>http://michaelay.github.io/</id>
+  <author>
+    <name><![CDATA[MichaelAY]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Java Object Creation]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/22/java-notes/"/>
+    <updated>2014-12-22T10:09:21-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/22/java-notes</id>
+    <content type="html"><![CDATA[<p><em>Work in progress</em></p>
+
+<p>Notes from reading &ldquo;Effective Java&rdquo;</p>
+
+<h3>Static factory method</h3>
+
+<ul>
+<li>advantages
+
+<ul>
+<li>with names</li>
+<li>not required to create new object when invoked</li>
+<li>can return object of any subtype of its return type</li>
+</ul>
+</li>
+<li>disadvantages
+
+<ul>
+<li>classes without public or protected constructors cannot be subclassed</li>
+</ul>
+</li>
+</ul>
+
+
+<pre><code class="java">public class Foo { 
+    private Foo() {} 
+    public static Foo getInstance() {
+        //...
+    }
+    public static Foo valueOf(bool value) {
+        //... 
+    }  
+} 
+</code></pre>
+
+<h3>Builder</h3>
+
+<p>Used when there are many constructor parameters</p>
+
+<pre><code class="java">public class Foo {
+    private final int required1; 
+    private final int required2;
+    private final int optional1; 
+    private final int optional2;
+
+    public static class Builder {
+        // required 
+        private final int required1; 
+        private final int required2;
+        // optional 
+        private final int optional1; 
+        private final int optional2;
+
+        public Builder(int required1, int required2) { 
+            this.required1 = required1; 
+            this.required2 = required2; 
+        }
+
+        public Builder required1(int val) { 
+            required1 = val; 
+            return this; 
+        }
+        public Builder required2(int val) { 
+            required2 = val; 
+            return this; 
+        }
+        public Builder optional1(int val) { 
+            optiona1 = val; 
+            return this; 
+        }    
+        public Builder optional2(int val) { 
+            optiona2 = val; 
+            return this; 
+        }    
+
+        public Foo build() { 
+            return new Foo(this); 
+        } 
+    } 
+
+    private Foo(Builder builder) { 
+        required1 = builder.required1 
+        required2 = builder.required2 
+        optional1 = builder.optional1
+        optional2 = builder.optional2 
+    } 
+}
+
+// usage example 
+Foo fooInstance = new Foo.Builder(10, 10).optional1(100).optional2(200).build(); 
+
+// build should throw IllegalStateException if parameters violate rules 
+
+// method that uses Builder 
+// assume Builder is defined as: 
+
+public interface Builder&lt;T&gt; { 
+    public T build(); 
+} 
+
+Tree nodeMethod(Builder&lt;? extends Node&gt; nodeBuilder) {
+    //...
+} 
+</code></pre>
+
+<p>advantages:</p>
+
+<ul>
+<li>no long, unnamed list of parameters</li>
+<li>can fill up optional values</li>
+<li><p>disadvantages:</p></li>
+<li><p>speed</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-29T15:28:16-08:00</updated>
+  <updated>2014-12-29T16:07:13-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Default Encoding]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/29/default-encoding/"/>
+    <updated>2014-12-29T16:06:10-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/29/default-encoding</id>
+    <content type="html"><![CDATA[<p>To change ruby encoding, run ruby with -E [coding].</p>
+
+<p>Example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/ruby -E UTF-8</span>
+</span><span class='line'>ruby code here
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Use Zip to Do Pairing of Enumerators]]></title>
+    <link href="http://michaelay.github.io/blog/2014/12/29/use-zip-to-do-pairing-of-enumerators/"/>
+    <updated>2014-12-29T16:05:26-08:00</updated>
+    <id>http://michaelay.github.io/blog/2014/12/29/use-zip-to-do-pairing-of-enumerators</id>
+    <content type="html"><![CDATA[<p><em>pending</em>
+use to_a.zip or zip</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Java Object Creation]]></title>
@@ -764,54 +792,6 @@ The code is as follow:
 <p>
 And this piece of code runs 20 SQL query instead of 2010 in the previous version. 
 Yet another nice little thing to distinguish between software engineers and programmers.
-</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Test Fixtures Tricks]]></title>
-    <link href="http://michaelay.github.io/blog/2011/11/14/test-fixtures-tricks/"/>
-    <updated>2011-11-14T15:03:00-08:00</updated>
-    <id>http://michaelay.github.io/blog/2011/11/14/test-fixtures-tricks</id>
-    <content type="html"><![CDATA[<p>
-Often we have model classes using serialized data fields. 
-This is how I write the YML fixture test data:
-</p>
-
-
-<figure class='code'><figcaption><span>Test fixture YML example for serialized array, serialized hash, and datetime</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">one</span><span class="p">:</span>
-</span><span class='line'>  <span class="nb">id</span><span class="p">:</span> <span class="mi">100</span>
-</span><span class='line'>  <span class="ss">some_hash_serialized</span><span class="p">:</span> <span class="o">&lt;</span><span class="sx">%= { :profile_image_url =</span><span class="o">&gt;</span> <span class="s1">&#39;http://....png&#39;</span> <span class="p">}</span><span class="o">.</span><span class="n">to_yaml</span><span class="o">.</span><span class="n">inspect</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  some_array_serialized: &lt;%= [ &#39;hello&#39;, &#39;world&#39; ].to_yaml.inspect %&gt;</span>
-</span><span class='line'>  <span class="ss">some_datetime</span><span class="p">:</span> <span class="o">&lt;</span><span class="sx">%= first_occurred_at: &lt;%=</span> <span class="mi">10</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">ago</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="ss">:db</span><span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby on Rails Respond_to and HTTP Accept Header]]></title>
-    <link href="http://michaelay.github.io/blog/2011/11/10/rails-respond-to-and-http-accept-header/"/>
-    <updated>2011-11-10T14:22:00-08:00</updated>
-    <id>http://michaelay.github.io/blog/2011/11/10/rails-respond-to-and-http-accept-header</id>
-    <content type="html"><![CDATA[<p>
-Rails has an API respond_to for determine the response body format. 
-According to <a href="http://api.rubyonrails.org/">api.rubyonrails.org</a>, &#8220;(Rails determines the desired response format from the HTTP Accept header submitted by the client.)&#8221;
-</p>
-
-
-<p>
-However, browsers seem to have different strategy on writing the HTTP Accept header, (<a href="http://www.gethifi.com/blog/browser-rest-http-accept-headers">http://www.gethifi.com/blog/browser-rest-http-accept-headers</a>), would that be a problem? 
-</p>
-
-
-<p>
 </p>
 
 ]]></content>

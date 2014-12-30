@@ -9,7 +9,7 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Representational state transfer transfer of representations of resources HTTP is accidentally RESTful use pre-existing, well-defined interface, &hellip;">
+  <meta name="description" content="Often we have model classes using serialized data fields. This is how I write the YML fixture test data: Test fixture YML example for serialized &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/14/test-fixtures-tricks/">Test Fixtures Tricks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-14T15:03:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>3:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+Often we have model classes using serialized data fields. 
+This is how I write the YML fixture test data:
+</p>
+
+
+<figure class='code'><figcaption><span>Test fixture YML example for serialized array, serialized hash, and datetime</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">one</span><span class="p">:</span>
+</span><span class='line'>  <span class="nb">id</span><span class="p">:</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="ss">some_hash_serialized</span><span class="p">:</span> <span class="o">&lt;</span><span class="sx">%= { :profile_image_url =</span><span class="o">&gt;</span> <span class="s1">&#39;http://....png&#39;</span> <span class="p">}</span><span class="o">.</span><span class="n">to_yaml</span><span class="o">.</span><span class="n">inspect</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  some_array_serialized: &lt;%= [ &#39;hello&#39;, &#39;world&#39; ].to_yaml.inspect %&gt;</span>
+</span><span class='line'>  <span class="ss">some_datetime</span><span class="p">:</span> <span class="o">&lt;</span><span class="sx">%= first_occurred_at: &lt;%=</span> <span class="mi">10</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">ago</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="ss">:db</span><span class="p">)</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/10/rails-respond-to-and-http-accept-header/">Ruby on Rails Respond_to and HTTP Accept Header</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-10T14:22:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>2:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+Rails has an API respond_to for determine the response body format. 
+According to <a href="http://api.rubyonrails.org/">api.rubyonrails.org</a>, &#8220;(Rails determines the desired response format from the HTTP Accept header submitted by the client.)&#8221;
+</p>
+
+
+<p>
+However, browsers seem to have different strategy on writing the HTTP Accept header, (<a href="http://www.gethifi.com/blog/browser-rest-http-accept-headers">http://www.gethifi.com/blog/browser-rest-http-accept-headers</a>), would that be a problem? 
+</p>
+
+
+<p>
+</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -177,6 +265,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/29/default-encoding/">Default Encoding</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/29/use-zip-to-do-pairing-of-enumerators/">Use Zip to Do Pairing of Enumerators</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/22/java-notes/">Java Object Creation</a>
       </li>
     
@@ -186,14 +282,6 @@
     
       <li class="post">
         <a href="/blog/2014/12/08/ruby-output-with-color/">Ruby Output With Color</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/08/mocking-backtick-in-rspec/">Mocking Backtick in RSpec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/05/user-defined-metadata-in-rspec/">User-defined Metadata in Rspec</a>
       </li>
     
   </ul>

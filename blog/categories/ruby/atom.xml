@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-29T16:07:13-08:00</updated>
+  <updated>2015-01-09T11:27:20-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Useful Link About Metaclasses]]></title>
+    <link href="http://michaelay.github.io/blog/2015/01/09/useful-link-about-metaclasses/"/>
+    <updated>2015-01-09T11:23:57-08:00</updated>
+    <id>http://michaelay.github.io/blog/2015/01/09/useful-link-about-metaclasses</id>
+    <content type="html"><![CDATA[<p>A useful link about ruby metaclasses
+<a href="http://viewsourcecode.org/why/hacking/seeingMetaclassesClearly.html">http://viewsourcecode.org/why/hacking/seeingMetaclassesClearly.html</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Default Encoding]]></title>
@@ -81,32 +91,6 @@ end
 
 <pre><code class="ruby">require 'colorize'
 puts "some output".red
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mocking Backtick in RSpec]]></title>
-    <link href="http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec/"/>
-    <updated>2014-12-08T10:54:23-08:00</updated>
-    <id>http://michaelay.github.io/blog/2014/12/08/mocking-backtick-in-rspec</id>
-    <content type="html"><![CDATA[<p>`cmd` is a method in Kernel.</p>
-
-<p>However, simply mocking the <code>Kernel</code> object does not work.
-This is because <code>Kernel</code> is a module included by class <code>Object</code>, its methods are available in every Ruby object.</p>
-
-<p>Instead of doing this:</p>
-
-<pre><code class="ruby">Kernel.expects(:`).with(
-    'unzip -d /tmp test.zip'
-)
-</code></pre>
-
-<p>We should be doing this:</p>
-
-<pre><code class="ruby">instance_of_current_object.expects(:`).with(
-    'unzip -d /tmp test.zip'
-)
 </code></pre>
 ]]></content>
   </entry>

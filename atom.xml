@@ -4,7 +4,7 @@
   <title><![CDATA[CopyAndPaste]]></title>
   <link href="http://michaelay.github.io/atom.xml" rel="self"/>
   <link href="http://michaelay.github.io/"/>
-  <updated>2014-12-29T16:07:13-08:00</updated>
+  <updated>2015-01-09T11:27:20-08:00</updated>
   <id>http://michaelay.github.io/</id>
   <author>
     <name><![CDATA[MichaelAY]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Useful Link About Metaclasses]]></title>
+    <link href="http://michaelay.github.io/blog/2015/01/09/useful-link-about-metaclasses/"/>
+    <updated>2015-01-09T11:23:57-08:00</updated>
+    <id>http://michaelay.github.io/blog/2015/01/09/useful-link-about-metaclasses</id>
+    <content type="html"><![CDATA[<p>A useful link about ruby metaclasses
+<a href="http://viewsourcecode.org/why/hacking/seeingMetaclassesClearly.html">http://viewsourcecode.org/why/hacking/seeingMetaclassesClearly.html</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Default Encoding]]></title>
@@ -747,52 +757,6 @@ You can restart the service as follow:
 </span></code></pre></td></tr></table></div></figure>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ActiveRecord - Use Include to Optimize SQL Query Performance]]></title>
-    <link href="http://michaelay.github.io/blog/2011/11/14/activerecord-use-include-to-optimize-sql-query-performance/"/>
-    <updated>2011-11-14T15:14:00-08:00</updated>
-    <id>http://michaelay.github.io/blog/2011/11/14/activerecord-use-include-to-optimize-sql-query-performance</id>
-    <content type="html"><![CDATA[<p>
-Consider you have a model Post and a mode Comment, where a Post has multiple Comments. 
-You DB has 10 Posts and 2000 Comments. 
-Now you want to get the all Posts and all Comments. How many SQL is executed if you do the following?
-</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">posts</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">all</span>
-</span><span class='line'><span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">p</span><span class="o">.</span><span class="n">comments</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-Rails execute 2010 SQL query for you. The code is easy to write, but not so fun to run on your webserver. 
-Rails gets the id of the Post objects and use them in 2000 seperate SQL query to get their Comments. 
-What about getting all the Comments all together when fetching the Post objects? 
-The <em>include</em> method does exactly that. 
-It tells Rails to run one additional SQL query to fetch all the Comments object after the SQL fetch a Post object. 
-The code is as follow: 
-</p>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Post</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">:include</span> <span class="o">=&gt;</span> <span class="ss">:comments</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-And this piece of code runs 20 SQL query instead of 2010 in the previous version. 
-Yet another nice little thing to distinguish between software engineers and programmers.
-</p>
 
 ]]></content>
   </entry>

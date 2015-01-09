@@ -9,7 +9,7 @@
   <meta name="author" content="MichaelAY">
 
   
-  <meta name="description" content="Often we have model classes using serialized data fields. This is how I write the YML fixture test data: Test fixture YML example for serialized &hellip;">
+  <meta name="description" content="Consider you have a model Post and a mode Comment, where a Post has multiple Comments. You DB has 10 Posts and 2000 Comments. Now you want to get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/14/activerecord-use-include-to-optimize-sql-query-performance/">ActiveRecord - Use Include to Optimize SQL Query Performance</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2011-11-14T15:14:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>3:14 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>
+Consider you have a model Post and a mode Comment, where a Post has multiple Comments. 
+You DB has 10 Posts and 2000 Comments. 
+Now you want to get the all Posts and all Comments. How many SQL is executed if you do the following?
+</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">posts</span> <span class="o">=</span> <span class="no">Post</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'><span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">p</span><span class="o">.</span><span class="n">comments</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Rails execute 2010 SQL query for you. The code is easy to write, but not so fun to run on your webserver. 
+Rails gets the id of the Post objects and use them in 2000 seperate SQL query to get their Comments. 
+What about getting all the Comments all together when fetching the Post objects? 
+The <em>include</em> method does exactly that. 
+It tells Rails to run one additional SQL query to fetch all the Comments object after the SQL fetch a Post object. 
+The code is as follow: 
+</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Post</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">:include</span> <span class="o">=&gt;</span> <span class="ss">:comments</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+And this piece of code runs 20 SQL query instead of 2010 in the previous version. 
+Yet another nice little thing to distinguish between software engineers and programmers.
+</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -265,6 +331,10 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/09/useful-link-about-metaclasses/">Useful Link About Metaclasses</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/29/default-encoding/">Default Encoding</a>
       </li>
     
@@ -280,10 +350,6 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
         <a href="/blog/2014/12/15/suppress-stdout-and-stderr-when-running-rspec/">Suppress Stdout and Stderr When Running RSpec</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2014/12/08/ruby-output-with-color/">Ruby Output With Color</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -297,7 +363,7 @@ However, browsers seem to have different strategy on writing the HTTP Accept hea
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - MichaelAY -
+  Copyright &copy; 2015 - MichaelAY -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
